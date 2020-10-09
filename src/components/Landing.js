@@ -11,7 +11,7 @@ export default function Landing() {
     <Layout>
       <Header className="landing-header"> </Header>
       <Content className="landing-main">
-        <h1> Prepster</h1>
+        <span style={{fontSize: "100px"}}>Prepster</span>
       </Content>
     </Layout>
   );
