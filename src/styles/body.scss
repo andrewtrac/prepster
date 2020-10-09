@@ -9,3 +9,23 @@
 .site-layout-background {
   background: #fff;
 }
+
+.body-sider {
+  width: 300px;
+  height: 100vh;
+  background-color: #f0f2f5 !important;
+}
+
+.body-header {
+  background-color: #663c1a !important;
+  border-bottom: 2.5px solid #412d1d;
+  width: 100vw;
+}
+
+.body-content {
+  background: rgb(255, 255, 255)
+} 
+
+.body-footer {
+  background: rgb(255, 255, 255) !important;
+}
