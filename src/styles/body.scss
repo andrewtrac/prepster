@@ -11,15 +11,22 @@
 }
 
 .body-sider {
-  width: 300px;
   height: 100vh;
-  background-color: #fff6e3 !important;
+  background-color: #faf8f4 !important;
+  border-right: 0.5px solid #e2e2e2;
 }
 
 .body-header {
-  background-color: #663c1a !important;
-  border-bottom: 2.5px solid #412d1d;
+  background-color: #bb904a !important;
+  border-bottom: 1px solid #5c4634;
   width: 100vw;
+  height: 10vh;
+  font-family: 'Sura', serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 40px;
+  color: white;
 }
 
 .body-content {

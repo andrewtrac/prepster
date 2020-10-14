@@ -5,6 +5,7 @@ import {
   LaptopOutlined,
   NotificationOutlined,
 } from "@ant-design/icons";
+import SideMenu from "./SideMenu";
 import "../styles/body.scss";
 import "antd/dist/antd.css";
 
@@ -14,15 +15,17 @@ const { Header, Content, Sider, Footer } = Layout;
 const Body = (props) => {
   return (
     <Layout>
-      <Header className="body-header">Header</Header>
+      <Header className="body-header">
+        <p style={{ marginLeft: "20px" }}>Prepster</p>
+      </Header>
 
       <Layout>
-        <Sider className="body-sider">Sider</Sider>
+        <Sider width={"280px"} className="body-sider">
+          <SideMenu />
+        </Sider>
 
-        <Content className="body-content">Content</Content>
+        <Content className="body-content"></Content>
       </Layout>
-      <Footer className="body-footer">Footer</Footer>
-
     </Layout>
   );
 };

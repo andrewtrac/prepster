@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Sura:wght@700&display=swap');
+
 
 .landing-main {
   width: 100vw;
-  height: 100vh;
+  height: 91vh;
   background-color: #ffd591;
   background-image: url("https://www.transparenttextures.com/patterns/shattered-dark.png");
   display: flex;
@@ -16,4 +16,6 @@
   background-color: #663c1a;
   border-bottom: 2.5px solid #412d1d;
   width: 100vw;
+  flex-direction: row;
+  justify-content: flex-start;
 }
