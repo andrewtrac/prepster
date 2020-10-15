@@ -2,10 +2,9 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
 
-const registerUser = async (name, email, password) => {
+const registerUser = async (email, password) => {
   try {
     const res = axios.post(`http://localhost:5000/users`, {
-      name,
       email,
       password
     })

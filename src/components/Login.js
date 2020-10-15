@@ -30,13 +30,26 @@ const Login = () => {
   };
 
   const handleChangeForm = (event) => {
-    if(event.currentTarget.name === "password") {
-    console.log("password:", event.currentTarget.value);
-    } else if (event.currentTarget.name === 'username') {
-      console.log("name:", event.currentTarget.value);
-
+    if (event.currentTarget.name === "password") {
+      let newFormValues = {
+        ...formValues,
+        password: event.currentTarget.value,
+      };
+      setValues(newFormValues);
+    } else if (event.currentTarget.name === "email") {
+      let newFormValues = {
+        ...formValues,
+        email: event.currentTarget.value,
+      };
+      setValues(newFormValues);
     }
   };
+
+  const handleRegister = (event) => {
+    registerUser(formValues.email, formValues.password)
+  }
+
+  console.log(formValues)
 
   return (
     <Form
@@ -49,16 +62,16 @@ const Login = () => {
       onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        label="Username"
-        name="username"
+        label="Email"
+        name="email"
         rules={[
           {
             required: true,
-            message: "Please input your username!",
+            message: "Please input your email!",
           },
         ]}
       >
-        <Input name="username" onChange={handleChangeForm}/>
+        <Input name="email" onChange={handleChangeForm} />
       </Form.Item>
 
       <Form.Item
@@ -82,7 +95,7 @@ const Login = () => {
         <Button type="primary" name="login" htmlType="submit">
           Submit
         </Button>
-        <Button style={{ marginLeft: "10px" }} type="primary">
+        <Button style={{ marginLeft: "10px" }} onClick={handleRegister} type="primary">
           Register
         </Button>
       </Form.Item>
