@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
-import { registerUser } from "../API_Calls/users.js";
+import { registerUser, loginUser } from "../API_Calls/users.js";
 
 const layout = {
   labelCol: {
@@ -49,6 +49,10 @@ const Login = () => {
     registerUser(formValues.email, formValues.password)
   }
 
+  const handleLogin = (event) => {
+    loginUser(formValues.email, formValues.password)
+  }
+
   console.log(formValues)
 
   return (
@@ -92,7 +96,7 @@ const Login = () => {
       </Form.Item>
 
       <Form.Item {...tailLayout}>
-        <Button type="primary" name="login" htmlType="submit">
+        <Button type="primary" name="login" onClick={handleLogin}>
           Submit
         </Button>
         <Button style={{ marginLeft: "10px" }} onClick={handleRegister} type="primary">
