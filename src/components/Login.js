@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Checkbox } from "antd";
 import { registerUser, loginUser } from "../API_Calls/users.js";
+import { useHistory } from 'react-router-dom'
+
 
 const layout = {
   labelCol: {
@@ -19,6 +21,9 @@ const tailLayout = {
 
 const Login = () => {
   const [formValues, setValues] = useState({});
+
+  const history = useHistory();
+
 
   // values is in object format format
   const onFinish = async (values) => {
@@ -47,10 +52,14 @@ const Login = () => {
 
   const handleRegister = (event) => {
     registerUser(formValues.email, formValues.password)
+    history.push({
+      pathname: '/home'})
   }
 
   const handleLogin = (event) => {
     loginUser(formValues.email, formValues.password)
+    history.push({
+      pathname: '/home'})
   }
 
   console.log(formValues)
