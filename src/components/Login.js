@@ -18,10 +18,10 @@ const tailLayout = {
 };
 
 const Login = () => {
-  const [loginForm, setLogin] = useState(true);
+  const [formValues, setValues] = useState({});
 
   // values is in object format format
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log("Success:", values);
   };
 
@@ -30,67 +30,63 @@ const Login = () => {
   };
 
   const handleChangeForm = (event) => {
-    let newForm = !loginForm;
-    setLogin(newForm);
+    if(event.currentTarget.name === "password") {
+    console.log("password:", event.currentTarget.value);
+    } else if (event.currentTarget.name === 'username') {
+      console.log("name:", event.currentTarget.value);
+
+    }
   };
 
   return (
-    <>
-      {loginForm && (
-        <Form
-          {...layout}
-          name="basic"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-        >
-          <Form.Item
-            label="Username"
-            name="username"
-            rules={[
-              {
-                required: true,
-                message: "Please input your username!",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+    <Form
+      {...layout}
+      name="basic"
+      initialValues={{
+        remember: true,
+      }}
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
+    >
+      <Form.Item
+        label="Username"
+        name="username"
+        rules={[
+          {
+            required: true,
+            message: "Please input your username!",
+          },
+        ]}
+      >
+        <Input name="username" onChange={handleChangeForm}/>
+      </Form.Item>
 
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[
-              {
-                required: true,
-                message: "Please input your password!",
-              },
-            ]}
-          >
-            <Input.Password />
-          </Form.Item>
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[
+          {
+            required: true,
+            message: "Please input your password!",
+          },
+        ]}
+      >
+        <Input.Password name="password" onChange={handleChangeForm} />
+      </Form.Item>
 
-          <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
+      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
+        <Checkbox>Remember me</Checkbox>
+      </Form.Item>
 
-          <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-            <Button
-              style={{ marginLeft: "10px" }}
-              type="primary"
-              onClick={handleChangeForm}
-            >
-              Register
-            </Button>
-          </Form.Item>
-        </Form>
-      )}
-    </>
+      <Form.Item {...tailLayout}>
+        <Button type="primary" name="login" htmlType="submit">
+          Submit
+        </Button>
+        <Button style={{ marginLeft: "10px" }} type="primary">
+          Register
+        </Button>
+      </Form.Item>
+    </Form>
   );
 };
 
