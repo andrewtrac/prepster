@@ -19,10 +19,23 @@ const tailLayout = {
   },
 };
 
+
+
 const Login = () => {
   const [formValues, setValues] = useState({});
+  const [loginError, setLoginError] = useState(false);
+
 
   const history = useHistory();
+
+  const getUserLogin = async (email, password) => {
+    loginUser(email, password).then(res => {
+      console.log(res)
+    })
+    .catch((error) => {
+      setLoginError(true)
+    });
+  }
 
 
   // values is in object format format
@@ -57,12 +70,17 @@ const Login = () => {
   }
 
   const handleLogin = (event) => {
-    loginUser(formValues.email, formValues.password)
-    history.push({
-      pathname: '/home'})
-  }
+    getUserLogin(formValues.email, formValues.password).then(res => {
+      if (res) {
+        history.push({
+          pathname: '/home'})
+      } else {
+        console.log(loginError)
+      }
+      })
+    }
+    
 
-  console.log(formValues)
 
   return (
     <Form
