@@ -1,5 +1,5 @@
 import React from "react";
-import { Checkbox, Row, Col } from "antd";
+import { Checkbox } from "antd";
 
 export default function Categories() {
   function onChange(checkedValues) {

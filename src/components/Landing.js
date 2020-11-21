@@ -1,11 +1,11 @@
 import React from "react";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout} from "antd";
 import Login from './Login.js'
 import "../styles/landing.scss";
 import 'antd/dist/antd.css';
 
 
-const { Header, Content, Sider, Footer } = Layout;
+const { Header, Content} = Layout;
 
 export default function Landing() {
   return (
