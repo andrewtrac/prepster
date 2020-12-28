@@ -16,8 +16,7 @@ const registerUser = async (email, password) => {
 const loginUser = async (email, password) => {
   try {
     const res = axios.post(`http://localhost:5000/users/authenticate`, {
-      email,
-      password
+      email
     })
       .then((res) => res.data);
     return res

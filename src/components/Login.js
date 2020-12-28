@@ -29,9 +29,7 @@ const Login = () => {
   const history = useHistory();
 
   const getUserLogin = async (email, password) => {
-    loginUser(email, password).then(res => {
-      console.log(res)
-    })
+    return loginUser(email).then((res) => {return res})
     .catch((error) => {
       setLoginError(true)
     });
@@ -70,15 +68,16 @@ const Login = () => {
   }
 
   const handleLogin = (event) => {
-    getUserLogin(formValues.email, formValues.password).then(res => {
-      if (res) {
-        history.push({
+    getUserLogin(formValues.email).then(res => {
+      if (res && res.password === formValues.password) {
+         history.push({
           pathname: '/home'})
       } else {
-        console.log(loginError)
+       console.log(loginError)
+       console.log(res)
       }
-      })
-    }
+    })
+  }
     
 
 
