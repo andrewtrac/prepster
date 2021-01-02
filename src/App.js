@@ -15,11 +15,15 @@ import "./App.css";
 
 function App() {
 
-  const [cookies, setCookie] = useCookies(["users"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["users"]);
 
   const cookieSetter = (email) => {
-    setCookie('user', `${email}`, { path: '/' });
+    setCookie('prepster-user-x0145', `${email}`, { path: '/' });
   }
+
+  const cookieRemover = () => {
+    removeCookie("prepster-user-x0145", { path: "/" });
+  };
 
 
   return (
@@ -30,7 +34,7 @@ function App() {
             <Landing cookieSetter={cookieSetter} cookies={cookies}/>
           </Route>
           <Route exact path="/home">
-            <Body />
+            <Body cookieSetter={cookieSetter} cookies={cookies} cookieRemover={cookieRemover}/>
           </Route>
         </Switch>
       </div>
