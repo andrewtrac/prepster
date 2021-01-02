@@ -8,17 +8,26 @@ import {
   withRouter,
   Redirect,
 } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 
 import "./App.css";
 
 function App() {
+
+  const [cookies, setCookie] = useCookies(["users"]);
+
+  const cookieSetter = (email) => {
+    setCookie('user', `${email}`, { path: '/' });
+  }
+
+
   return (
     <Router>
       <div className="App">
         <Switch>
           <Route exact path="/">
-            <Landing />
+            <Landing cookieSetter={cookieSetter} cookies={cookies}/>
           </Route>
           <Route exact path="/home">
             <Body />

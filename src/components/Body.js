@@ -23,7 +23,6 @@ const Body = (props) => {
         <Sider width={"280px"} className="body-sider">
           <SideMenu />
         </Sider>
-
         <Content className="body-content"></Content>
       </Layout>
     </Layout>

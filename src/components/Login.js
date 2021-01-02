@@ -21,9 +21,11 @@ const tailLayout = {
 
 
 
-const Login = () => {
+const Login = (props) => {
   const [formValues, setValues] = useState({});
   const [loginError, setLoginError] = useState(false);
+
+  const { cookieSetter } = props
 
 
   const history = useHistory();
@@ -70,11 +72,12 @@ const Login = () => {
   const handleLogin = (event) => {
     getUserLogin(formValues.email).then(res => {
       if (res && res.password === formValues.password) {
+        setLoginError(false)
+        cookieSetter(formValues.email)
          history.push({
           pathname: '/home'})
       } else {
-       console.log(loginError)
-       console.log(res)
+        setLoginError(true)
       }
     })
   }
