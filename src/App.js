@@ -15,7 +15,7 @@ import "./App.css";
 
 function App() {
 
-  const [cookies, setCookie, removeCookie] = useCookies(["users"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["prepster-user-x0145"]);
 
   const cookieSetter = (email) => {
     setCookie('prepster-user-x0145', `${email}`, { path: '/' });
@@ -24,6 +24,7 @@ function App() {
   const cookieRemover = () => {
     removeCookie("prepster-user-x0145", { path: "/" });
   };
+
 
 
   return (

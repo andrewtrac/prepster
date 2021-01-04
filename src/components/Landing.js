@@ -16,11 +16,12 @@ export default function Landing(props) {
     if (cookies["prepster-user-x0145"]) {
       history.push({
         pathname: "/home",
+        state: {
+          params: cookies
+        }
       });
     }
   }, [cookies]);
-
-  console.log(cookies)
 
   return (
     <Layout>

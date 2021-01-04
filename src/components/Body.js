@@ -27,13 +27,16 @@ const Body = (props) => {
     });
   };
 
-  // useEffect(() => {
-  //   if (!cookies["prepster-user-x0145"]) {
+  //  useEffect(() => {
+  //     if (!cookies["prepster-user-x0145"]) {
   //     history.push({
-  //       pathname: "/",
-  //     });
-  //   }
+  //        pathname: "/",
+  //    });
+  //    }
   // }, []);
+
+  console.log(cookies)
+
 
   return (
     <Layout>
