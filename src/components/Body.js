@@ -84,7 +84,7 @@ const Body = (props) => {
         <Sider width={"280px"} className="body-sider">
           <SideMenu handleCategories={handleCategories}/>
         </Sider>
-        <Content className="body-content" style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignContent: "center"}}>
+        <Content className="body-content" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
           <Card style={{ width: 300, height: 300 }} bordered={true}>
             <p>{question}</p>
           </Card>
@@ -93,7 +93,7 @@ const Body = (props) => {
             style={{ marginTop: "20px" }}
             onClick={handleQuestions}
           >
-            Question
+            Question Generator
           </Button>
         </Content>
       </Layout>
