@@ -20,14 +20,18 @@ const Body = (props) => {
   const [question, setQuestion] = useState("")
   const [category, setCategory] = useState([])
 
-  const handleCategories = (category) => {
-    setCategory(category)
+  const handleCategories = (newCategory) => {
+    setCategory(newCategory)
   }
 
-  useEffect(() => {
+  const handleQuestions = () => {
     const randomCategory = category[Math.floor(Math.random() * category.length)]; // random category 
-    console.log(randomCategory)
-  }, [category]);
+    if(category.length > 0) {
+    getQuestion(randomCategory).then((res) => {
+      setQuestion(res[0].question)
+    }
+    ) }
+  }
 
 
   const { cookies, cookieSetter, cookieRemover } = props;
@@ -82,9 +86,15 @@ const Body = (props) => {
         </Sider>
         <Content className="body-content" style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignContent: "center"}}>
           <Card style={{ width: 300, height: 300 }} bordered={true}>
-            <p>Card content</p>
+            <p>{question}</p>
           </Card>
-          ,
+          <Button
+            type="primary"
+            style={{ marginTop: "20px" }}
+            onClick={handleQuestions}
+          >
+            Question
+          </Button>
         </Content>
       </Layout>
     </Layout>
