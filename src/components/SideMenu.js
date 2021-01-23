@@ -7,7 +7,10 @@ import "antd/dist/antd.css";
 
 const { Panel } = Collapse;
 
-export default function SideMenu() {
+export default function SideMenu(props) {
+
+  const { handleCategories } = props
+
   const text = `
   A dog is a type of domesticated animal.
   Known for its loyalty and faithfulness,
@@ -17,7 +20,7 @@ export default function SideMenu() {
     <>
       <Collapse className="sidemenu-main">
         <Panel className="sidemenu-panel" header="Categories" key="1">
-          <Categories/>
+          <Categories handleCategories={handleCategories} />
         </Panel>
         <Panel className="sidemenu-panel" header="Analytics" key="2">
           <p>{text}</p>

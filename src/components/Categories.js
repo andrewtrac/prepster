@@ -1,9 +1,13 @@
 import React from "react";
 import { Checkbox } from "antd";
 
-export default function Categories() {
+export default function Categories(props) {
+
+  const { handleCategories } = props
+
+
   function onChange(checkedValues) {
-    console.log("checked = ", checkedValues);
+    handleCategories(checkedValues)
   }
   return (
     <Checkbox.Group style={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "flex-start"}} onChange={onChange}>
