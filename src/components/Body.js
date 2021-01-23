@@ -30,7 +30,9 @@ const Body = (props) => {
     getQuestion(randomCategory).then((res) => {
       setQuestion(res[0].question)
     }
-    ) }
+    ) } else {
+      setQuestion("Please select a category on the left hand menu")
+    }
   }
 
 
@@ -51,6 +53,7 @@ const Body = (props) => {
         pathname: "/",
       });
     }
+    console.log(cookies)
   }, [cookies]);
 
 
@@ -62,17 +65,17 @@ const Body = (props) => {
           style={{
             display: "flex",
             flexDirection: "row",
-            alignContent: "center",
+            alignItems: "center",
+            justifyContent: "center"
           }}
         >
           <span
-            style={{ marginRight: "10px", fontSize: "20px", padding: "0px" }}
+            style={{ marginRight: "10px", fontSize: "15px"}}
           >
-            Test
+            {cookies["prepster-user-x0145"]}
           </span>
           <Button
             type="primary"
-            style={{ marginTop: "20px" }}
             onClick={handleLogout}
           >
             Logout
