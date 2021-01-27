@@ -10,7 +10,7 @@ export default function Categories(props) {
     handleCategories(checkedValues)
   }
   return (
-    <Checkbox.Group style={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "flex-start"}} onChange={onChange}>
+    <Checkbox.Group style={{ width: "100%", display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "flex-start", marginBottom: "20px"}} onChange={onChange}>
         <Checkbox style={{ marginLeft: "8px" }}value="time management">Time Management</Checkbox> 
         <Checkbox value="leadership">Leadership</Checkbox>
         <Checkbox value="communication">Communication</Checkbox>

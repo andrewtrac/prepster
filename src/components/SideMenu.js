@@ -20,7 +20,7 @@ export default function SideMenu(props) {
     <>
       <Collapse className="sidemenu-main">
         <Panel className="sidemenu-panel" header="Categories" key="1">
-          <Categories handleCategories={handleCategories} />
+          <Categories className="categories" handleCategories={handleCategories} />
         </Panel>
         <Panel className="sidemenu-panel" header="Analytics" key="2">
           <p>{text}</p>

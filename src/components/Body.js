@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Menu, Card } from "antd";
+import { Layout, Menu, Card, Input } from "antd";
 import {
   UserOutlined,
   LaptopOutlined,
@@ -93,11 +93,12 @@ const Body = (props) => {
           </Card>
           <Button
             type="primary"
-            style={{ marginTop: "20px" }}
+            style={{ marginTop: "20px", marginBottom: "10px" }}
             onClick={handleQuestions}
           >
             Question Generator
           </Button>
+          <Input style={{ width: '10%' }} placeholder="Timer (seconds)" />
         </Content>
       </Layout>
     </Layout>
