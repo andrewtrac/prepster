@@ -19,6 +19,7 @@ const Body = (props) => {
 
   const [question, setQuestion] = useState("")
   const [category, setCategory] = useState([])
+  const [timer, setTimer] = useState(0)
 
   const handleCategories = (newCategory) => {
     setCategory(newCategory)
