@@ -16,26 +16,45 @@ const { SubMenu } = Menu;
 const { Header, Content, Sider, Footer } = Layout;
 
 const Body = (props) => {
-
-  const [question, setQuestion] = useState("")
-  const [category, setCategory] = useState([])
-  const [timer, setTimer] = useState(0)
+  const [question, setQuestion] = useState("");
+  const [category, setCategory] = useState([]);
+  const [timer, setTimer] = useState(0);
+  const [initiateTimer, setInitiateTimer] = useState(0)
+  const [initiate, setInitiate] = useState(false);
 
   const handleCategories = (newCategory) => {
-    setCategory(newCategory)
-  }
+    setCategory(newCategory);
+  };
 
   const handleQuestions = () => {
-    const randomCategory = category[Math.floor(Math.random() * category.length)]; // random category 
-    if(category.length > 0) {
-    getQuestion(randomCategory).then((res) => {
-      setQuestion(res[0].question)
+    const randomCategory =
+      category[Math.floor(Math.random() * category.length)]; // random category
+    if (category.length > 0) {
+      getQuestion(randomCategory).then((res) => {
+        setQuestion(res[0].question);
+        setInitiateTimer(timer)
+      });
+    } else {
+      setQuestion("Please select a category on the left hand menu");
     }
-    ) } else {
-      setQuestion("Please select a category on the left hand menu")
-    }
-  }
+  };
 
+  const handleTimer = (event) => {
+    setTimer(event.currentTarget.value);
+  };
+
+  useEffect(() => {
+    let timerStart = setInterval(() => {
+      if (initiateTimer > 0) {
+        setInitiateTimer((seconds) => seconds - 1);
+      } else { 
+        clearInterval(timerStart)
+      }
+    }, 1000);
+    return () => {
+      clearInterval(timerStart);
+    };
+  }, [initiateTimer]);
 
   const { cookies, cookieSetter, cookieRemover } = props;
 
@@ -54,7 +73,7 @@ const Body = (props) => {
         pathname: "/",
       });
     }
-    console.log(cookies)
+    console.log(cookies);
   }, [cookies]);
 
 
@@ -67,18 +86,13 @@ const Body = (props) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
-          <span
-            style={{ marginRight: "10px", fontSize: "15px"}}
-          >
+          <span style={{ marginRight: "10px", fontSize: "15px" }}>
             {cookies["prepster-user-x0145"]}
           </span>
-          <Button
-            type="primary"
-            onClick={handleLogout}
-          >
+          <Button type="primary" onClick={handleLogout}>
             Logout
           </Button>
         </div>
@@ -86,11 +100,20 @@ const Body = (props) => {
 
       <Layout>
         <Sider width={"280px"} className="body-sider">
-          <SideMenu handleCategories={handleCategories}/>
+          <SideMenu handleCategories={handleCategories} />
         </Sider>
-        <Content className="body-content" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+        <Content
+          className="body-content"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Card style={{ width: 300, height: 300 }} bordered={true}>
             <p>{question}</p>
+            <p>{initiateTimer}</p>
           </Card>
           <Button
             type="primary"
@@ -99,7 +122,12 @@ const Body = (props) => {
           >
             Question Generator
           </Button>
-          <Input style={{ width: '10%' }} placeholder="Timer (seconds)" />
+          <Input
+            style={{ width: "20%" }}
+            placeholder="Timer (seconds)"
+            onChange={handleTimer}
+            maxLength={2}
+          />
         </Content>
       </Layout>
     </Layout>
