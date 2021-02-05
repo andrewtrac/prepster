@@ -19,8 +19,7 @@ const Body = (props) => {
   const [question, setQuestion] = useState("");
   const [category, setCategory] = useState([]);
   const [timer, setTimer] = useState(0);
-  const [initiateTimer, setInitiateTimer] = useState(0)
-  const [initiate, setInitiate] = useState(false);
+  const [initiateTimer, setInitiateTimer] = useState(0);
 
   const handleCategories = (newCategory) => {
     setCategory(newCategory);
@@ -32,7 +31,7 @@ const Body = (props) => {
     if (category.length > 0) {
       getQuestion(randomCategory).then((res) => {
         setQuestion(res[0].question);
-        setInitiateTimer(timer)
+        setInitiateTimer(timer);
       });
     } else {
       setQuestion("Please select a category on the left hand menu");
@@ -47,8 +46,8 @@ const Body = (props) => {
     let timerStart = setInterval(() => {
       if (initiateTimer > 0) {
         setInitiateTimer((seconds) => seconds - 1);
-      } else { 
-        clearInterval(timerStart)
+      } else {
+        clearInterval(timerStart);
       }
     }, 1000);
     return () => {
@@ -75,7 +74,6 @@ const Body = (props) => {
     }
     console.log(cookies);
   }, [cookies]);
-
 
   return (
     <Layout>
