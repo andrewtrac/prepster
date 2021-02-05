@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Menu, Card, Input } from "antd";
+import { Layout, Menu, Card, Input, Slider } from "antd";
 import {
   UserOutlined,
   LaptopOutlined,
@@ -12,7 +12,6 @@ import "antd/dist/antd.css";
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getQuestion } from "../API_Calls/questions.js";
-const { SubMenu } = Menu;
 const { Header, Content, Sider, Footer } = Layout;
 
 const Body = (props) => {
@@ -20,6 +19,7 @@ const Body = (props) => {
   const [category, setCategory] = useState([]);
   const [timer, setTimer] = useState(0);
   const [initiateTimer, setInitiateTimer] = useState(0);
+  const [sliderValue, setSliderValue] = useState(0);
 
   const handleCategories = (newCategory) => {
     setCategory(newCategory);
@@ -65,6 +65,10 @@ const Body = (props) => {
       pathname: "/",
     });
   };
+
+  const handleSliderValue = (value) => {
+    setSliderValue(value)
+  }
 
   useEffect(() => {
     if (!cookies["prepster-user-x0145"]) {
@@ -126,6 +130,9 @@ const Body = (props) => {
             onChange={handleTimer}
             maxLength={2}
           />
+          <div style={{width: "50%"}}> 
+          <Slider max={10} min={0} onChange={(value) => handleSliderValue(value)} value={sliderValue} />
+          </div>
         </Content>
       </Layout>
     </Layout>
