@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const registerUser = async (email, password) => {
   try {
-    const res = axios.post(`http://localhost:5000/users`, {
+    const res = axios.post(`https://prepster-api.herokuapp.com/users`, {
       email,
       password
     })
@@ -15,7 +15,7 @@ const registerUser = async (email, password) => {
 
 const loginUser = async (email, password) => {
   try {
-    const res = axios.post(`http://localhost:5000/users/authenticate`, {
+    const res = axios.post(`https://prepster-api.herokuapp.com/users/authenticate`, {
       email
     })
       .then((res) => res.data);

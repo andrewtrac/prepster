@@ -28,13 +28,17 @@ const Body = (props) => {
   const handleQuestions = () => {
     const randomCategory =
       category[Math.floor(Math.random() * category.length)]; // random category
-    if (category.length > 0) {
+    if (category.length > 0 && timer > 0) {
       getQuestion(randomCategory).then((res) => {
         setQuestion(res[0].question);
         setInitiateTimer(timer);
       });
-    } else {
+    } else if(timer > 0 && category.length === 0) {
       setQuestion("Please select a category on the left hand menu");
+    } else if(timer === 0 && category.length > 0) {
+      setQuestion("Please input time on the timer");
+    } else {
+      setQuestion("Please input time on the timer and select a question");
     }
   };
 
@@ -130,7 +134,9 @@ const Body = (props) => {
             onChange={handleTimer}
             maxLength={2}
           />
-          <div style={{width: "50%"}}> 
+          <br></br>
+          <div style={{width: "25%"}}> 
+          <span>Difficulty Meter</span>
           <Slider max={10} min={0} onChange={(value) => handleSliderValue(value)} value={sliderValue} />
           </div>
         </Content>
